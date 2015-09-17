@@ -35,4 +35,25 @@ object Currying {
                                                   //> res5: Int = 3025
 	sumWithMultipleParameterLists (x => x) (1, 10)
                                                   //> res6: Int = 55
+     
+     
+     
+     
+
+	
+	
+	def mapReduce(f: Int => Int, combine: (Int, Int) => Int, zero: Int)(a: Int, b: Int): Int =
+		if (a > b) zero
+		else combine(f(a), mapReduce(f, combine, zero)(a + 1, b)) //|  Int)Int
+		
+		
+	def product(f: Int => Int) (a: Int, b: Int): Int =
+  	mapReduce(f, (x, y) => x * y, 1)(a, b)    //> product: (f: Int => Int)(a: Int, b: Int)Int
+  
+  def factInTermsOfProduct(n: Int) = product(x => x)(1, n)
+                                                  //> factInTermsOfProduct: (n: Int)Int
+  
+  product(x => x * x)(1, 5)                       //> res7: Int = 14400
+	factInTermsOfProduct(5)                   //> res8: Int = 120
+
 }
