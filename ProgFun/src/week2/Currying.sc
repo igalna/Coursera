@@ -25,7 +25,14 @@ object Currying {
   
   sumCubes(1, 10) + sumFactorials(10, 20)         //> res3: Int = 267634641
 
-	sum (fact) (1, 10)                        //> res4: Int = 4037913
-	sum (x => x * x * x) (1, 10)              //> res5: Int = 3025
-	sum (x => x) (1, 10)                      //> res6: Int = 55
+  def sumWithMultipleParameterLists(f: Int => Int)(a: Int, b: Int): Int =
+		if (a > b) 0
+		else f(a) + sum(f)(a + 1, b)      //> sumWithMultipleParameterLists: (f: Int => Int)(a: Int, b: Int)Int
+
+	sumWithMultipleParameterLists (fact) (1, 10)
+                                                  //> res4: Int = 4037913
+	sumWithMultipleParameterLists (x => x * x * x) (1, 10)
+                                                  //> res5: Int = 3025
+	sumWithMultipleParameterLists (x => x) (1, 10)
+                                                  //> res6: Int = 55
 }
