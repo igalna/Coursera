@@ -27,11 +27,11 @@ object HigherOrderFunctions {
   
   def fact(x: Int): Int =
   	if (x == 0) 1
-  	else fact(x -1)                           //> fact: (x: Int)Int
+  	else x * fact(x -1)                       //> fact: (x: Int)Int
   
   
   sumInts(1, 5)                                   //> res0: Int = 15
   sumCubes(1,5)                                   //> res1: Int = 225
-  sumFactorials(1,5)                              //> res2: Int = 5
+  sumFactorials(1,5)                              //> res2: Int = 153
 
 }
