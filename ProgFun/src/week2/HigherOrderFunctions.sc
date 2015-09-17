@@ -11,10 +11,10 @@ object HigherOrderFunctions {
   def id(x: Int): Int = x                         //> id: (x: Int)Int
   
   def sumInts(a: Int, b: Int): Int =
-  	sum(id, a, b)                             //> sumInts: (a: Int, b: Int)Int
+  	sum(x => x, a, b)                         //> sumInts: (a: Int, b: Int)Int
   
   def sumCubes(a: Int, b: Int): Int =
-  	sum(cube, a, b)                           //> sumCubes: (a: Int, b: Int)Int
+  	sum(x => x * x * x, a, b)                 //> sumCubes: (a: Int, b: Int)Int
   	
   def cube(x: Int): Int =
   	x * x * x                                 //> cube: (x: Int)Int
