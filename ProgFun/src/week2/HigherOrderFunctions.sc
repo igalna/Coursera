@@ -19,6 +19,7 @@ object HigherOrderFunctions {
   def sumCubes(a: Int, b: Int): Int =
   	sum(x => x * x * x)(a, b)                 //> sumCubes: (a: Int, b: Int)Int
   	
+  
   def cube(x: Int): Int =
   	x * x * x                                 //> cube: (x: Int)Int
   
