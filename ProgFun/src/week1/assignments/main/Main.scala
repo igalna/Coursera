@@ -22,8 +22,36 @@ object Main {
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+    def loop (chars: List[Char], count: Int): Boolean = {
+      (chars, count) match {
+        case (chars, 0) if chars.isEmpty => true
+        case (chars, _) if chars.isEmpty => false
+        case (chars, c) => 
+          chars.head match {
+            case '(' => loop(chars.tail, count + 1)
+            case ')' if (count > 0) => loop (chars.tail, count - 1)
+            case ')' => false
+            case _ => loop(chars.tail, count)
+          }
+      }
+    }
+    loop(chars, 0)
+  }
 
+  /**
+   * 
+   * def loop(chars: List[Char], count: Int): Boolean = {
+      if (chars.head == '(') loop(chars.tail, count + 1)
+      else if (chars.head == ')' && count > 0) loop(chars.tail, count - 1)
+      else if (chars.isEmpty && count == 0) true
+      else false
+    }
+    loop(chars, 0)
+   * 
+   */
+  
+  
   /**
    * Exercise 3
    */
