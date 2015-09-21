@@ -38,19 +38,6 @@ object Main {
     }
     loop(chars, 0)
   }
-
-  /**
-   * 
-   * def loop(chars: List[Char], count: Int): Boolean = {
-      if (chars.head == '(') loop(chars.tail, count + 1)
-      else if (chars.head == ')' && count > 0) loop(chars.tail, count - 1)
-      else if (chars.isEmpty && count == 0) true
-      else false
-    }
-    loop(chars, 0)
-   * 
-   */
-  
   
   /**
    * Exercise 3
