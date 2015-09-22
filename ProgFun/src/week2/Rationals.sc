@@ -10,9 +10,9 @@ class Rational(x: Int, y: Int) {
 	private def gcd(a: Int, b: Int): Int =
 		if (b == 0) a
 		else gcd(b, a % b)
-		
-	def numer = x
-	def denom = y
+	private val g = gcd(x,y)
+	def numer = x / g
+	def denom = y / g
 	
 	def add(that: Rational) =
 		new Rational(
@@ -30,10 +30,8 @@ class Rational(x: Int, y: Int) {
 		if (this.less(that)) that
 		else this
 		
-	override def toString = {
-		val g = gcd(x,y)
-		numer / g + " / " + denom / g
-	}
+	override def toString =
+		numer + " / " + denom
 }
 
 object Rationals {
