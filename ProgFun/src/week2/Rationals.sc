@@ -14,20 +14,20 @@ class Rational(x: Int, y: Int) {
 	def numer = x / g
 	def denom = y / g
 	
-	def add(that: Rational) =
+	def + (that: Rational) =
 		new Rational(
 			numer * that.denom + that.numer * denom,
 			denom * that.denom)
 	
-	def sub(that: Rational) = add(that.neg)
+	def - (that: Rational) = -that
 	
-	def neg: Rational = new Rational(-numer, denom)
+	def unary_- : Rational = new Rational(-numer, denom)
 		
-	def less(that: Rational) =
+	def < (that: Rational) =
 		this.numer * that.denom < that.numer * this.denom
 	
 	def max(that: Rational) =
-		if (this.less(that)) that
+		if (this < (that)) that
 		else this
 		
 	override def toString =
@@ -41,13 +41,16 @@ object Rationals {
   val y = new Rational(5, 7)                      //> y  : week2.Rational = 5 / 7
   val z = new Rational(3, 2)                      //> z  : week2.Rational = 3 / 2
   
-  x.sub(y).sub(z)                                 //> res0: week2.Rational = -79 / 42
-  y.add(y)                                        //> res1: week2.Rational = 10 / 7
+  x - y - z                                       //> res0: week2.Rational = 3 / -2
+  y + y                                           //> res1: week2.Rational = 10 / 7
   
-  x.less(y)                                       //> res2: Boolean = true
+  x < y                                           //> res2: Boolean = true
   
-  x.max(y)                                        //> res3: week2.Rational = 5 / 7
+  x max y                                         //> res3: week2.Rational = 5 / 7
   
   new Rational(2)                                 //> res4: week2.Rational = 2 / 1
   
+  new Rational(1, 2).numer                        //> res5: Int = 1
+  
+  new Rational(1, 2) < (new Rational(2, 3))       //> res6: Boolean = true
 }
